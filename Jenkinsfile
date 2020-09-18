@@ -4,12 +4,12 @@ pipeline {
     stage('Build') {
       agent {
         docker {
-          image 'python:2-alpine'
+          image 'python'
         }
       }
       steps {
         sh 'pip install -r requirements.txt'
-        sh 'python -m app.py'
+        sh 'python app.py'
         stash(name: 'compiled-results', includes: '*.py*')
       }
     }
