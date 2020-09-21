@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'python --version'
-        sh 'pip install -r --user requirements.txt'
+        sh 'pip install --user -r requirements.txt'
         sh 'python app.py'
         stash(name: 'compiled-results', includes: '*.py*')
         echo 'Building'
